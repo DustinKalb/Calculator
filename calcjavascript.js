@@ -1,23 +1,21 @@
-// Select the display element
 const display = document.getElementById('display');
 
-// Variables to store the current input, previous input, and operator
 let currentInput = '';
 let previousInput = '';
 let operator = null;
 
-// Function to update the display
+// Updates the display
 function updateDisplay() {
     display.textContent = currentInput || '0';
 }
 
-// Function to handle number button clicks
+// Appends input to current number
 function appendNumber(number) {
     currentInput += number;
     updateDisplay();
 }
 
-// Function to handle operator button clicks
+// Handles the operator and prepares for next input
 function chooseOperator(op) {
     if (currentInput === '') return;
     if (previousInput !== '') {
@@ -28,7 +26,7 @@ function chooseOperator(op) {
     currentInput = '';
 }
 
-// Function to perform the calculation
+// Calculation
 function calculate() {
     let result;
     const prev = parseFloat(previousInput);
@@ -58,7 +56,7 @@ function calculate() {
     updateDisplay();
 }
 
-// Function to clear the calculator
+// Clears the calculator
 function clearCalculator() {
     currentInput = '';
     previousInput = '';
@@ -66,7 +64,7 @@ function clearCalculator() {
     updateDisplay();
 }
 
-// Add event listeners to buttons
+// Handles event listeners
 document.querySelectorAll('button').forEach(button => {
     button.addEventListener('click', () => {
         const value = button.textContent;
@@ -83,5 +81,4 @@ document.querySelectorAll('button').forEach(button => {
     });
 });
 
-// Initialize the display
 updateDisplay();
